@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baterías 360 - Catálogo ETNA</title>
+
+<!-- BOOTSTRAP -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- ICONOS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<style>
+body {
+    background-color: #f5f5f5;
+}
+
+/* NAVBAR FLOTANTE */
+.navbar {
+    border-bottom: 3px solid #ffc107;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+    url('img/banner.jpg') center/cover;
+    padding: 80px 0;
+    color: white;
+}
+
+.section-title {
+    border-left: 6px solid #ffc107;
+    padding-left: 15px;
+    margin-bottom: 30px;
+}
+
+.card img {
+    height: 180px;
+    object-fit: contain;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.card {
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+}
+
+.card:hover {
+    transform: scale(1.04);
+}
+
+.logo-navbar {
+    height: 45px;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    font-size: 28px;
+    padding: 15px 18px;
+    border-radius: 50%;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.email-float {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background: #ffc107;
+    color: black;
+    font-size: 24px;
+    padding: 15px 18px;
+    border-radius: 50%;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.modal-img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+}
+
+/* FOOTER PROFESIONAL */
+.footer-profesional {
+    background: #000;
+    color: #d1d1d1;
+    padding: 50px 0 20px 0;
+    margin-top: 60px;
+}
+
+.footer-profesional h5,
+.footer-profesional h6 {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.footer-profesional p {
+    font-size: 14px;
+    color: #cfcfcf;
+}
+
+.footer-profesional .payment-icons i {
+    font-size: 28px;
+    margin-right: 15px;
+    color: #ffc107;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    margin-top: 25px;
+    padding-top: 15px;
+    font-size: 13px;
+    color: #9e9e9e;
+}
+</style>
+</head>
+
+<script>
+document.getElementById("formReclamo").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    try {
+        await fetch("https://formsubmit.co/ajax/baterias360@gmail.com", {
+            method: "POST",
+            body: data
+        });
+
+        alert("Reclamo enviado correctamente. Nos comunicaremos a la brevedad.");
+        form.reset();
+
+        // Cerrar modal automáticamente
+        let modal = bootstrap.Modal.getInstance(document.getElementById('reclamoModal'));
+        modal.hide();
+
+    } catch (error) {
+        alert("Error al enviar el reclamo. Intente nuevamente.");
+    }
+});
+</script>
+
+<body>
+
+<!-- NAVBAR (AHORA FLOTANTE) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="img/logo.png" class="logo-navbar me-2">
+      <span class="fw-bold text-warning fs-4">Baterías 360</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav mx-auto text-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Inicio</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+            Catálogo
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="pdf/baterias-platinium.pdf" download>
+                Descargar Baterías Platinium
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="pdf/baterias-profesional.pdf" download>
+                Descargar Baterías Profesional
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- BOTÓN CAMBIADO: CONTACTO → QUIÉNES SOMOS (CON MODAL) -->
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#quienesModal">
+            Quiénes Somos
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <a href="https://wa.me/51923638871" target="_blank" class="btn btn-warning fw-bold">
+      WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero text-center">
+  <div class="container">
+    <h1 class="fw-bold">Catálogo Oficial Baterías ETNA</h1>
+    <p>consulte disponibilidad de modelos</p>
+  </div>
+</section>
+
+<div class="container my-5">
+
+  <!-- ⚡ SECCIÓN PLATINIUM -->
+  <h2 class="section-title fw-bold text-dark">⚡ Baterías Platinium (PL)</h2>
+  <div class="row g-4 mb-5">
+
+    <div class="col-md-4 col-lg-3">
+      <div class="card shadow text-center p-2">
+        <img src="img/FF-13 PL NOR.jpeg" onclick="mostrarFicha('ETNA FF-13 PL NOR','70 Ah','12V','PL NOR','img/FF-13 PL NOR.jpeg')">
+        <h6 class="fw-bold">ETNA FF-13 PL NOR</h6>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-lg-3">
+      <div class="card shadow text-center p-2">
+        <img src="img/HL-11 PL NOR.jpeg" onclick="mostrarFicha('ETNA HL-11 PL NOR','60 Ah','12V','PL NOR','img/HL-11 PL NOR.jpeg')">
+        <h6 class="fw-bold">ETNA HL-11 PL NOR</h6>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-lg-3">
+      <div class="card shadow text-center p-2">
+        <img src="img/MT-11 PL NOR.jpeg" onclick="mostrarFicha('ETNA MT-11 PL NOR','67 Ah','12V','PL NOR','img/MT-11 PL NOR.jpeg')">
+        <h6 class="fw-bold">ETNA MT-11 PL NOR</h6>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-lg-3">
+      <div class="card shadow text-center p-2">
+        <img src="img/S-1215EM PL NOR.jpeg" onclick="mostrarFicha('ETNA S-1215EM PL','90 Ah','12V','PL NOR','img/S-1215EM PL NOR.jpeg')">
+        <h6 class="fw-bold">ETNA S-1215EM PL</h6>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-lg-3">
+      <div class="card shadow text-center p-2">
+        <img src="img/S-1217EM PL NOR.jpg" onclick="mostrarFicha('ETNA S-1217AEM','105 Ah','12V','PL NOR','img/S-1217AEM.jpeg')">
+        <h6 class="fw-bold">ETNA S-1217AEM</h6>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-lg-3">
+      <div class="card shadow text-center p-2">
+        <img src="img/SD-13 PL NOR.jpeg" onclick="mostrarFicha('ETNA SD-13 PL NOR','90 Ah','12V','PL NOR','img/SD-13 PL NOR.jpeg')">
+        <h6 class="fw-bold">ETNA SD-13 PL NOR</h6>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ⚡ SECCIÓN PROFESIONAL -->
+  <h2 class="section-title fw-bold text-dark">⚡ Baterías Profesional (PRO Extrema)</h2>
+  <div class="row g-4">
+
+    <div class="col-md-4 col-lg-3">
+      <div class="card shadow text-center p-2">
+        <img src="img/V-13 PRO EXT INV.jpg" onclick="mostrarFicha('ETNA PRO EXTREMA V-13','87 Ah','12V','Libre Mantenimiento','img/V-13 PRO EXT INV.jpg')">
+        <h6 class="fw-bold">ETNA PRO EXTREMA 87Ah</h6>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-lg-3">
+      <div class="card shadow text-center p-2">
+        <img src="img/W-13 PRO EXT NOR.jpg" onclick="mostrarFicha('ETNA PRO EXTREMA W-13','75 Ah','12V','Libre Mantenimiento','img/W-13 PRO EXT NOR.jpg')">
+        <h6 class="fw-bold">ETNA PRO EXTREMA 75Ah</h6>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-lg-3">
+      <div class="card shadow text-center p-2">
+        <img src="img/FF-13 PRO.jpeg" onclick="mostrarFicha('ETNA PRO EXTREMA FF-13','70 Ah','12V','Libre Mantenimiento','img/FF-13 PRO.jpeg')">
+        <h6 class="fw-bold">ETNA PRO EXTREMA 70Ah</h6>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-lg-3">
+      <div class="card shadow text-center p-2">
+        <img src="img/FH-1215.jpeg" onclick="mostrarFicha('ETNA PRO EXTREMA FH-1215','102 Ah','12V','Libre Mantenimiento','img/FH-1215.jpeg')">
+        <h6 class="fw-bold">ETNA PRO EXTREMA 102Ah</h6>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL QUIENES SOMOS -->
+<div class="modal fade" id="quienesModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title fw-bold">¿Quiénes Somos?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p class="fw-semibold">
+          Somos un negocio de distribución y venta de baterías,
+          en una gran variedad de modelos para todo tipo de vehículos.
+        </p>
+        <p>
+          Trabajamos con productos de calidad, atención rápida y asesoría especializada.
+          La satisfacción del cliente es nuestro compromiso.
+        </p>
+        <p class="fw-bold text-warning">
+          Baterías 360° – Energía confiable para tu vehículo.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER PROFESIONAL COMPLETO -->
+<footer class="footer-profesional">
+  <div class="container">
+    <div class="row">
+
+      <!-- LOGO Y DESCRIPCIÓN -->
+      <div class="col-md-4 mb-4">
+        <h5>Baterías 360°</h5>
+        <p>
+          Especialistas en distribución y venta de baterías ETNA.
+          Contamos con una amplia variedad de modelos para todo tipo de vehículos.
+        </p>
+        <p class="fw-bold text-warning">
+          Energía confiable para tu vehículo.
+        </p>
+      </div>
+
+      <!-- MEDIOS DE PAGO -->
+      <div class="col-md-4 mb-4">
+        <h6>Medios de Pago</h6>
+        <div class="payment-icons mt-3">
+          <i class="bi bi-credit-card-2-front-fill"></i> Visa<br><br>
+          <i class="bi bi-credit-card-fill"></i> Mastercard<br><br>
+          <i class="bi bi-bank"></i> Transferencias Bancarias<br><br>
+          <i class="bi bi-cash-stack"></i> Pago en Efectivo
+        </div>
+      </div>
+
+      <!-- LIBRO DE RECLAMACIONES -->
+      <div class="col-md-4 mb-4">
+        <h6>Libro de Reclamaciones</h6>
+        <p>
+          Conforme a lo establecido en el Código de Protección y Defensa del Consumidor,
+          contamos con Libro de Reclamaciones a su disposición.
+        </p>
+    <button class="btn btn-warning fw-bold" data-bs-toggle="modal" data-bs-target="#reclamoModal">
+  Registrar Reclamo
+</button>
+
+
+      </div>
+
+    </div>
+
+    <!-- DERECHOS RESERVADOS -->
+    <div class="footer-bottom text-center">
+      © 2026 Todos los derechos reservados | Baterías 360° - Perú
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL LIBRO DE RECLAMACIONES -->
+<div class="modal fade" id="reclamoModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title fw-bold">
+          Libro de Reclamaciones - Baterías 360°
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+
+      <form id="formReclamo">
+          
+  <!-- Configuración -->
+  <input type="hidden" name="_subject" value="Nuevo Reclamo - Baterías 360°">
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label class="form-label fw-bold">Nombres</label>
+      <input type="text" name="Nombres" class="form-control" required>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label class="form-label fw-bold">Apellidos</label>
+      <input type="text" name="Apellidos" class="form-control" required>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label fw-bold">Número de Boleta o Factura</label>
+    <input type="text" name="Boleta" class="form-control" placeholder="Ej: B001-000123" required>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label class="form-label fw-bold">Correo Electrónico</label>
+      <input type="email" name="Correo" class="form-control" required>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label class="form-label fw-bold">Teléfono</label>
+      <input type="tel" name="Telefono" class="form-control" required>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label fw-bold">Detalle del Reclamo</label>
+    <textarea name="Reclamo" class="form-control" rows="4" placeholder="Describa su reclamo..." required></textarea>
+  </div>
+
+  <div class="text-end">
+    <button type="submit" class="btn btn-dark fw-bold">
+      Enviar Reclamo
+    </button>
+  </div>
+
+</form>
+
+
+
+
+<!-- MODAL FICHA -->
+<div class="modal fade" id="fichaModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title fw-bold">Ficha Técnica</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img id="modalImg" class="modal-img mb-3">
+        <p><strong>Modelo:</strong> <span id="modalModelo"></span></p>
+        <p><strong>Capacidad:</strong> <span id="modalCapacidad"></span></p>
+        <p><strong>Voltaje:</strong> <span id="modalVoltaje"></span></p>
+        <p><strong>Tipo:</strong> <span id="modalTipo"></span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTONES FLOTANTES -->
+<a href="mailto:nmc.1720111@gmail.com" class="email-float">
+  <i class="bi bi-envelope-fill"></i>
+</a>
+
+<a href="https://wa.me/51923638871" class="whatsapp-float" target="_blank">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+function mostrarFicha(modelo, capacidad, voltaje, tipo, imagen) {
+    document.getElementById("modalModelo").innerText = modelo;
+    document.getElementById("modalCapacidad").innerText = capacidad;
+    document.getElementById("modalVoltaje").innerText = voltaje;
+    document.getElementById("modalTipo").innerText = tipo;
+    document.getElementById("modalImg").src = imagen;
+
+    let modal = new bootstrap.Modal(document.getElementById('fichaModal'));
+    modal.show();
+}
+</script>
+
+
+</body>
+
+</html>
