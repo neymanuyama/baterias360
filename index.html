@@ -387,53 +387,59 @@ document.getElementById("formReclamo").addEventListener("submit", async function
 
       <div class="modal-body">
 
-      <form id="formReclamo">
+        <form action="https://formsubmit.co/baterias360@gmail.com" method="POST">
           
-  <!-- Configuración -->
-  <input type="hidden" name="_subject" value="Nuevo Reclamo - Baterías 360°">
+          <!-- Configuración automática -->
+          <input type="hidden" name="_subject" value="Nuevo Reclamo - Baterías 360°">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
 
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <label class="form-label fw-bold">Nombres</label>
-      <input type="text" name="Nombres" class="form-control" required>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label fw-bold">Nombres</label>
+              <input type="text" name="Nombres" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label class="form-label fw-bold">Apellidos</label>
+              <input type="text" name="Apellidos" class="form-control" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-bold">Número de Boleta o Factura</label>
+            <input type="text" name="Boleta" class="form-control" placeholder="Ej: B001-000123" required>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label fw-bold">Correo Electrónico</label>
+              <input type="email" name="Correo" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label class="form-label fw-bold">Teléfono</label>
+              <input type="tel" name="Telefono" class="form-control" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-bold">Detalle del Reclamo</label>
+            <textarea name="Reclamo" class="form-control" rows="4" placeholder="Describa su reclamo..." required></textarea>
+          </div>
+
+          <div class="text-end">
+            <button type="submit" class="btn btn-dark fw-bold">
+              Enviar Reclamo
+            </button>
+          </div>
+
+        </form>
+
+      </div>
     </div>
-
-    <div class="col-md-6 mb-3">
-      <label class="form-label fw-bold">Apellidos</label>
-      <input type="text" name="Apellidos" class="form-control" required>
-    </div>
   </div>
-
-  <div class="mb-3">
-    <label class="form-label fw-bold">Número de Boleta o Factura</label>
-    <input type="text" name="Boleta" class="form-control" placeholder="Ej: B001-000123" required>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <label class="form-label fw-bold">Correo Electrónico</label>
-      <input type="email" name="Correo" class="form-control" required>
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <label class="form-label fw-bold">Teléfono</label>
-      <input type="tel" name="Telefono" class="form-control" required>
-    </div>
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label fw-bold">Detalle del Reclamo</label>
-    <textarea name="Reclamo" class="form-control" rows="4" placeholder="Describa su reclamo..." required></textarea>
-  </div>
-
-  <div class="text-end">
-    <button type="submit" class="btn btn-dark fw-bold">
-      Enviar Reclamo
-    </button>
-  </div>
-
-</form>
-
+</div>
 
 
 
@@ -457,7 +463,7 @@ document.getElementById("formReclamo").addEventListener("submit", async function
 </div>
 
 <!-- BOTONES FLOTANTES -->
-<a href="mailto:nmc.1720111@gmail.com" class="email-float">
+<a href="mailto:baterias360@gmail.com" class="email-float">
   <i class="bi bi-envelope-fill"></i>
 </a>
 
